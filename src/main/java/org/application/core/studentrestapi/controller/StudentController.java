@@ -1,6 +1,6 @@
 package org.application.core.studentrestapi.controller;
 
-import org.application.core.studentrestapi.entities.Student;
+import org.application.core.studentrestapi.entities.Students;
 import org.application.core.studentrestapi.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,28 +13,28 @@ public class StudentController {
     @Autowired
     StudentRepository studentRepository;
 
-    @GetMapping("/student/")
-    public List<Student> getAllProducts() {
+    @GetMapping("/students/")
+    public List<Students> getAllStudents() {
         return studentRepository.findAll();
     }
 
-    @GetMapping("/student/{id}")
-    public Student getProduct(@PathVariable("id") int id){
+    @GetMapping("/students/{id}")
+    public Students getStudents(@PathVariable("id") int id){
         return studentRepository.findById(id).get();
     }
 
-    @PostMapping("/student/")
-    public Student createProduct(@RequestBody Student product){
-        return studentRepository.save(product);
+    @PostMapping("/students/")
+    public Students createStudents(@RequestBody Students students){
+        return studentRepository.save(students);
     }
 
-    @PutMapping("/student/")
-    public Student updateProduct(@RequestBody Student product){
-        return studentRepository.save(product);
+    @PutMapping("/students/")
+    public Students updateStudents(@RequestBody Students students){
+        return studentRepository.save(students);
     }
 
-    @DeleteMapping("/student/{id}")
-    public void deleteProduct(@PathVariable("id") int id){
+    @DeleteMapping("/students/{id}")
+    public void deleteStudents(@PathVariable("id") int id){
         studentRepository.deleteById(id);
     }
 }
